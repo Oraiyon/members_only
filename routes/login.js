@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const asyncHandler = require("express-async-handler");
-const { body, validationResult } = require("express-validator");
+const passport = require("passport");
 
 router.get("/", (req, res, next) => {
   res.render("login", {
@@ -9,12 +8,13 @@ router.get("/", (req, res, next) => {
   });
 });
 
-router.post("/", [
-  body("email", "Email must be specified").trim().isLength({ min: 1 }).escape(),
-  body("password", "Password must be atleast 6 characters").trim().isLength({ min: 6 }).escape(),
-  asyncHandler(async (req, res, next) => {
-    const errors = validationResult(req);
+// Failing
+router.post(
+  "/",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/signup"
   })
-]);
+);
 
 module.exports = router;

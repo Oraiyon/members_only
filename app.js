@@ -2,14 +2,13 @@ const express = require("express");
 const path = require("path");
 const session = require("express-session");
 const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
-const asyncHandler = require("express-async-handler");
 const MongoStore = require("connect-mongo");
 const dotenv = require("dotenv");
 const indexRouter = require("./routes/index");
 const loginRouter = require("./routes/login");
 const signupRouter = require("./routes/signup");
+const initializePassport = require("./passport-config");
 
 dotenv.config();
 
@@ -32,6 +31,24 @@ app.set("view engine", "ejs");
 // To use req.body
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(
+  session({
+    // Put in Railway
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({
+      mongoUrl: process.env.URL,
+      collectionName: "members_only_sessions"
+    }),
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24
+    }
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+initializePassport(passport);
 
 app.use("/", indexRouter);
 app.use("/login", loginRouter);

@@ -14,6 +14,7 @@ router.get("/", (req, res, next) => {
 router.post("/", [
   body("first_name", "First name must be specified").trim().isLength({ min: 1 }).escape(),
   body("last_name", "Last name must be specified").trim().isLength({ min: 1 }).escape(),
+  // email is username here
   body("email", "Email must be specified").trim().isLength({ min: 1 }).escape(),
   body("password", "Password must be atleast 6 characters").trim().isLength({ min: 6 }).escape(),
   body("confirmPassword", "Confirm password must match password")
@@ -30,7 +31,7 @@ router.post("/", [
         const user = new User({
           first_name: req.body.first_name,
           last_name: req.body.last_name,
-          email: req.body.email,
+          username: req.body.email,
           password: hashedPassword,
           member: false
         });
