@@ -8,7 +8,6 @@ router.get("/", (req, res, next) => {
   });
 });
 
-// Failing
 router.post(
   "/",
   passport.authenticate("local", {

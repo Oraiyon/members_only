@@ -14,8 +14,7 @@ router.get("/", (req, res, next) => {
 router.post("/", [
   body("first_name", "First name must be specified").trim().isLength({ min: 1 }).escape(),
   body("last_name", "Last name must be specified").trim().isLength({ min: 1 }).escape(),
-  // email is username here
-  body("email", "Email must be specified").trim().isLength({ min: 1 }).escape(),
+  body("username", "Username must be specified").trim().isLength({ min: 1 }).escape(),
   body("password", "Password must be atleast 6 characters").trim().isLength({ min: 6 }).escape(),
   body("confirmPassword", "Confirm password must match password")
     .trim()
@@ -23,15 +22,15 @@ router.post("/", [
       return value === req.body.password;
     }),
   asyncHandler(async (req, res, next) => {
-    const errors = validationResult(req);
     bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
       if (err) {
         return next(err);
       } else {
+        const errors = validationResult(req);
         const user = new User({
           first_name: req.body.first_name,
           last_name: req.body.last_name,
-          username: req.body.email,
+          username: req.body.username,
           password: hashedPassword,
           member: false
         });

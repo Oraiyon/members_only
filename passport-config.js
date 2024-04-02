@@ -1,4 +1,4 @@
-const LocalStrategy = require("passport-local");
+const LocalStrategy = require("passport-local").Strategy;
 const User = require("./models/user");
 const bcrypt = require("bcryptjs");
 
@@ -6,6 +6,7 @@ const initializePassport = (passport) => {
   passport.use(
     new LocalStrategy(async (username, password, done) => {
       try {
+        // Must be findOne()
         const user = await User.findOne({ username: username });
         if (!user) {
           return done(null, false, { message: "Incorrect Username" });
