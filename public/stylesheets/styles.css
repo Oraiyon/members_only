@@ -8,3 +8,8 @@
   display: flex;
   gap: 8px;
 }
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+}

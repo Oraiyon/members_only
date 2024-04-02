@@ -43,7 +43,7 @@ router.post("/", [
           return;
         } else {
           await user.save();
-          res.redirect("/");
+          res.redirect("/login");
         }
       }
     });

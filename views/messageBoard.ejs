@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <title>Messages</title>
+  </head>
+  <body>
+    <div>
+      <a href="/login">Login</a>
+      <a href="/signup">Sign up</a>
+      <% if (!user.member) { %>
+        <a href="/member">Join the club!</a>
+      <% } %>
+    </div>
+      <h1>Message Board</h1>
+      <% if (!posts.length) { %>
+        <p>No posts yet.</p>
+      <% } else { %>
+        <% posts.forEach(post => { %>
+          <% if (user.member) { %>
+            <div class="post">
+              <p><%= post.user.username %></p>
+              <p><%= post.date_posted_formatted %></p>
+            </div>
+          <% } %>
+          <p><%= post.message %></p>
+        <% }) %>
+      <% } %>
+      <a href="/messages/post">Post a message</a>
+  </body>
+</html>
