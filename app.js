@@ -8,6 +8,7 @@ const dotenv = require("dotenv");
 const indexRouter = require("./routes/index");
 const loginRouter = require("./routes/login");
 const signupRouter = require("./routes/signup");
+const memberRouter = require("./routes/member");
 const initializePassport = require("./passport-config");
 
 dotenv.config();
@@ -46,6 +47,8 @@ app.use(
     }
   })
 );
+// To use stylesheets
+app.use(express.static(path.join(__dirname + "/public")));
 app.use(passport.initialize());
 app.use(passport.session());
 initializePassport(passport);
@@ -53,3 +56,4 @@ initializePassport(passport);
 app.use("/", indexRouter);
 app.use("/login", loginRouter);
 app.use("/signup", signupRouter);
+app.use("/member", memberRouter);

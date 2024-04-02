@@ -57,5 +57,10 @@
     </div>
     <button>Submit</button>
   </form>
+  <% if (errors) { %>
+    <% errors.forEach(err => { %>
+      <p><%= err.msg %></p>
+    <% }) %>
+  <% } %>
 </body>
 </html>

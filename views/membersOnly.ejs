@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <title>Members Only</title>
+  </head>
+  <body>
+    <% if (!user.member) { %>
+      <h1><%= message === "" ? "Members Only" : message %></h1>
+      <form action="" method="post">
+        <p>Enter the secret code to join the club</p>
+        <input type="text" name="passcode">
+        <button>Submit</button>
+      </form>
+    <% } else { %>
+      <h1>Hello, World</h1>
+      <% if (!posts.length) { %>
+        <p>No posts yet.</p>
+      <% } else { %>
+        <% posts.forEach(post => { %>
+          <div class="post">
+            <p><%= post.user.username %></p>
+            <p><%= post.date_posted_formatted %></p>
+          </div>
+          <p><%= post.message %></p>
+        <% }) %>
+      <% } %>
+      <a href="/member/post">Post a message</a>
+    <% } %>
+  </body>
+</html>
