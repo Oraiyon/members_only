@@ -57,8 +57,8 @@
     </div>
     <button>Submit</button>
   </form>
-  <% if (errors) { %>
-    <% errors.forEach(err => { %>
+  <% if (locals.errors) { %>
+    <% locals.errors.forEach(err => { %>
       <p><%= err.msg %></p>
     <% }) %>
   <% } %>

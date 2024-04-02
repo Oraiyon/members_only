@@ -17,7 +17,6 @@ router.get(
     ]);
     res.render("membersOnly", {
       user: user,
-      message: "",
       posts: posts
     });
   })
@@ -43,10 +42,7 @@ router.post(
 );
 
 router.get("/post", (req, res, next) => {
-  res.render("post", {
-    message: "",
-    errors: ""
-  });
+  res.render("post");
 });
 
 router.post("/post", [

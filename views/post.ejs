@@ -14,11 +14,11 @@
       id="message" 
       cols="30" 
       rows="10"
-      required><%= message === "" ? "" : message %></textarea>
+      required><%= locals.message === "" ? "" : locals.message %></textarea>
       <button>Submit</button>
     </form>
-    <% if (errors) { %>
-      <% errors.forEach(err => { %>
+    <% if (locals.errors) { %>
+      <% locals.errors.forEach(err => { %>
         <p><%= err.msg %></p>
       <% }) %>
     <% } %>

@@ -8,7 +8,7 @@
   </head>
   <body>
     <% if (!user.member) { %>
-      <h1><%= message === "" ? "Members Only" : message %></h1>
+      <h1><%= locals.message ? locals.message : "Members Only" %></h1>
       <form action="" method="post">
         <p>Enter the secret code to join the club</p>
         <input type="text" name="passcode">
