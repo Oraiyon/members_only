@@ -40,7 +40,7 @@ router.post("/post", [
       return;
     } else {
       await post.save();
-      res.redirect("/messages");
+      res.redirect("/");
     }
   })
 ]);

@@ -19,7 +19,7 @@ router.post(
     } else {
       user.member = true;
       await user.save();
-      res.redirect("/messages");
+      res.redirect("/");
     }
   })
 );

@@ -54,8 +54,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 initializePassport(passport);
 
-app.use("/", indexRouter);
+// app.use("/", indexRouter);
+app.use("/", messagesRouter);
 app.use("/login", loginRouter);
 app.use("/signup", signupRouter);
-app.use("/messages", messagesRouter);
 app.use("/member", memberRouter);
