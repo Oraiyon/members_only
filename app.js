@@ -50,6 +50,7 @@ app.use(
 );
 // To use stylesheets
 app.use(express.static(path.join(__dirname + "/public")));
+// Passport
 app.use(passport.initialize());
 app.use(passport.session());
 initializePassport(passport);
