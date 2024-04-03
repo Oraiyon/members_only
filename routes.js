@@ -9,6 +9,7 @@ const member_controller = require("./controllers/memberController");
 //  TYPING ROUTES ARE STILL ACCESSIBLE
 
 router.get("/", messages_controller.index);
+router.post("/", messages_controller.delete_post);
 router.get("/post", messages_controller.create_post_get);
 router.post("/post", messages_controller.create_post_post);
 

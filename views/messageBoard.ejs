@@ -29,6 +29,12 @@
             <div class="post">
               <p><%= post.user.username %></p>
               <p><%= post.date_posted_formatted %></p>
+              <% if (locals.user.admin) { %>
+               <form action="" method="post">
+                <input type="hidden" name="messageid" value=<%= post._id %>>
+                <button>Delete</button>
+               </form>
+              <% } %>
             </div>
           <% } %>
           <p><%= post.message %></p>

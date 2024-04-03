@@ -15,6 +15,11 @@ exports.index = asyncHandler(async (req, res, next) => {
   });
 });
 
+exports.delete_post = asyncHandler(async (req, res, next) => {
+  await Post.findByIdAndDelete(req.body.messageid).exec();
+  res.redirect("/");
+});
+
 exports.create_post_get = (req, res, next) => {
   if (!req.user) {
     res.redirect("/");
