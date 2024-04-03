@@ -30,7 +30,8 @@ exports.signup_post = [
           last_name: req.body.last_name,
           username: req.body.username,
           password: hashedPassword,
-          member: false
+          member: false,
+          admin: false
         });
         if (!errors.isEmpty()) {
           res.render("signup", {
