@@ -4,9 +4,9 @@ const session = require("express-session");
 const passport = require("passport");
 const mongoose = require("mongoose");
 const MongoStore = require("connect-mongo");
-const dotenv = require("dotenv");
-const routers = require("./routes/routes");
+const routers = require("./routes");
 const initializePassport = require("./passport-config");
+const dotenv = require("dotenv");
 
 dotenv.config();
 

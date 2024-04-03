@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-const messages_controller = require("../controllers/messagesController");
-const signup_controller = require("../controllers/signupController");
-const login_controller = require("../controllers/loginController");
-const member_controller = require("../controllers/memberController");
+const messages_controller = require("./controllers/messagesController");
+const signup_controller = require("./controllers/signupController");
+const login_controller = require("./controllers/loginController");
+const member_controller = require("./controllers/memberController");
 
 router.get("/", messages_controller.index);
 router.get("/post", messages_controller.create_post_get);
