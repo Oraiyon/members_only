@@ -6,6 +6,8 @@ const signup_controller = require("./controllers/signupController");
 const login_controller = require("./controllers/loginController");
 const member_controller = require("./controllers/memberController");
 
+//  TYPING ROUTES ARE STILL ACCESSIBLE
+
 router.get("/", messages_controller.index);
 router.get("/post", messages_controller.create_post_get);
 router.post("/post", messages_controller.create_post_post);
@@ -19,5 +21,7 @@ router.get("/logout", login_controller.logout);
 
 router.get("/member", member_controller.member_get);
 router.post("/member", member_controller.member_post);
+router.get("/admin", member_controller.admin_get);
+router.post("/admin", member_controller.admin_post);
 
 module.exports = router;

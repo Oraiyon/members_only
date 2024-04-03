@@ -16,6 +16,9 @@
       <% if (locals.user) { %>
         <a href="/logout">Logout</a>
       <% } %>
+      <% if (locals.user && !locals.user.admin) { %>
+        <a href="/admin">Chosen one?</a>
+      <% } %>
     </div>
       <h1>Message Board</h1>
       <% if (!posts.length) { %>
