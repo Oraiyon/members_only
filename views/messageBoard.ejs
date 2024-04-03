@@ -7,8 +7,12 @@
     <title>Messages</title>
   </head>
   <body>
-    <div>
-      <a href="/login">Login</a>
+    <nav>
+      <% if (!locals.user) { %>
+        <a href="/login">Login</a>
+      <% } else { %>
+        <a href="/logout">Logout</a>
+      <% } %>
       <a href="/signup">Sign up</a>
       <% if (locals.user && !locals.user.member) { %>
         <a href="/member">Join the club!</a>
@@ -16,10 +20,7 @@
       <% if (locals.user && !locals.user.admin) { %>
         <a href="/admin">Chosen one?</a>
       <% } %>
-      <% if (locals.user) { %>
-        <a href="/logout">Logout</a>
-      <% } %>
-    </div>
+    </nav>
       <h1>Message Board</h1>
       <% if (!posts.length) { %>
         <p>No posts yet.</p>
