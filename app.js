@@ -5,10 +5,10 @@ const passport = require("passport");
 const mongoose = require("mongoose");
 const MongoStore = require("connect-mongo");
 const dotenv = require("dotenv");
-const indexRouter = require("./routes/index");
+// const indexRouter = require("./routes/index");
+const messagesRouter = require("./routes/messages");
 const loginRouter = require("./routes/login");
 const signupRouter = require("./routes/signup");
-const messagesRouter = require("./routes/messages");
 const memberRouter = require("./routes/member");
 const initializePassport = require("./passport-config");
 
