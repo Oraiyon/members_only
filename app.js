@@ -5,12 +5,6 @@ const passport = require("passport");
 const mongoose = require("mongoose");
 const MongoStore = require("connect-mongo");
 const dotenv = require("dotenv");
-// const indexRouter = require("./routes/index");
-// const messagesRouter = require("./routes/messages");
-// const loginRouter = require("./routes/login");
-// const signupRouter = require("./routes/signup");
-// const memberRouter = require("./routes/member");
-// const logoutRouter = require("./routes/logout");
 const routers = require("./routes/routes");
 const initializePassport = require("./passport-config");
 
@@ -57,12 +51,4 @@ app.use(passport.initialize());
 app.use(passport.session());
 initializePassport(passport);
 
-// MOVE ROUTES TO A CONTROLLER
-// MOVE GET/ POST ROUTERS TO A SINGLE PAGE
-// app.use("/", indexRouter);
-// app.use("/", messagesRouter);
-// app.use("/login", loginRouter);
-// app.use("/signup", signupRouter);
-// app.use("/member", memberRouter);
-// app.use("/logout", logoutRouter);
 app.use("/", routers);
