@@ -9,7 +9,6 @@ router.get(
   "/",
   asyncHandler(async (req, res, next) => {
     const posts = await Post.find().populate("user").exec();
-    console.log(req.user);
     let user = undefined;
     if (req.user) {
       user = await User.findById(req.user.id).exec();
