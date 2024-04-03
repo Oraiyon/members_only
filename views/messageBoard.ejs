@@ -13,11 +13,11 @@
       <% if (locals.user && !locals.user.member) { %>
         <a href="/member">Join the club!</a>
       <% } %>
-      <% if (locals.user) { %>
-        <a href="/logout">Logout</a>
-      <% } %>
       <% if (locals.user && !locals.user.admin) { %>
         <a href="/admin">Chosen one?</a>
+      <% } %>
+      <% if (locals.user) { %>
+        <a href="/logout">Logout</a>
       <% } %>
     </div>
       <h1>Message Board</h1>
