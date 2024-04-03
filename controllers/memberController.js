@@ -10,6 +10,10 @@ const generateMessage = () => {
 };
 
 exports.member_get = (req, res, next) => {
+  // Redirects if not logged in OR already member
+  if (!req.user || req.user.member) {
+    res.redirect("/");
+  }
   res.render("member");
 };
 
@@ -28,6 +32,9 @@ exports.member_post = asyncHandler(async (req, res, next) => {
 });
 
 exports.admin_get = (req, res, next) => {
+  if (!req.user || req.user.admin) {
+    res.redirect("/");
+  }
   res.render("admin");
 };
 

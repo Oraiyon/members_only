@@ -16,6 +16,9 @@ exports.index = asyncHandler(async (req, res, next) => {
 });
 
 exports.create_post_get = (req, res, next) => {
+  if (!req.user) {
+    res.redirect("/");
+  }
   res.render("post");
 };
 
