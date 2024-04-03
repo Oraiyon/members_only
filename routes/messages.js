@@ -8,11 +8,12 @@ const { body, validationResult } = require("express-validator");
 router.get(
   "/",
   asyncHandler(async (req, res, next) => {
-    const [user, posts] = await Promise.all([
-      User.findById(req.user.id).exec(),
-      // populate("field")
-      Post.find().populate("user").exec()
-    ]);
+    const posts = await Post.find().populate("user").exec();
+    console.log(req.user);
+    let user = undefined;
+    if (req.user) {
+      user = await User.findById(req.user.id).exec();
+    }
     res.render("messageBoard", {
       user: user,
       posts: posts
